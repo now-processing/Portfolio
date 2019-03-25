@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css?family=Inconsolata|Montserrat');
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    color: inherit;
+}
+
+:root {
+    --first: translateZ(1.5rem);
+    --second: translateZ(3rem);
+    --third: translateZ(4.5rem);
+}
+
+html, body {
+    font-family: 'Inconsolata', monospace;
+    font-size: 3vmin;
+    text-align: center;
+    background: rgb(40,40,50);
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.card {
+    position: relative;
+    width: 40vmin;
+    height: 70.5vmin;
+    color: white;
+    transform-style: preserve-3d;
+    transition: transform 2s ease;
+    /*animation: spin 10s infinite linear;*/
+    /*transform: rotateY(-45deg);*/
+}
+
+@keyframes spin {
+    from {transform: rotateY(0);}
+    to {transform: rotateY(-360deg);}
+}
+
+.card > div {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    transform-style: preserve-3d;
+    white-space: nowrap;
+}
+
+.front {
+    transform: translateZ(20vmin);
+}
+
+.side {
+    transform: rotateY(270deg) translateX(-20vmin);
+	transform-origin: top left;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+}
+
+/* front card styling */
+
+.front > :nth-child(1) {
+    position: absolute;
+    left: 0.1em;
+    transform: var(--third);
+}
+.front > :nth-child(2) {
+    position: relative;
+    top: 1.5em;
+    right: 1em;
+    transform: var(--first);
+}
+.front > :nth-child(3) {
+    position: absolute;
+    top: 1.25em;
+    left: 0;
+    writing-mode: vertical-rl;
+    transform: var(--second);
+}
+.front > :nth-child(4) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    writing-mode: vertical-rl;
+    transform: var(--second);
+}
+.front > :nth-child(5) {
+    margin-top: 5em;
+    margin-right: 1.25em;
+    text-align: right;
+    transform: var(--first);
+}
+.front > a {
+    position: relative;
+    left: 0;
+    display: block;
+    transform: var(--second);
+}
+.front > a > i {
+    transition: 0.5s;
+}
+.front > a > i:hover {
+    padding: 1em;
+    background: white;
+    color: black;
+    border-radius: 50%;
+}
+.front > :nth-child(7) {
+    position: absolute;
+    bottom: 2.25em;
+    left: 0.25em;
+    cursor: pointer;
+    transform: var(--first);
+}
+.switch {
+    position: absolute;
+    bottom: 3.2em;
+    left: 0.25em;
+    white-space: nowrap;
+    cursor: pointer;
+    transform: var(--third);
+}
+
+/* side card styling */
+
+.side a {
+    display: block;
+    margin: 0 0.25em;
+    padding: 0.5em;
+    border-radius: 50%;
+    background: rgb(40,40,50);
+    transition: 1s;
+}
+.links a:hover {
+    color: black;
+    background: white;
+}
+img {
+    width: 100%;
+}
+
+.side > :nth-child(1) {
+    transform: var(--second);
+}
+.side > :nth-child(2) {
+    transform: var(--third);
+}
+.side > :nth-child(3) {
+    transform: var(--second);
+}
+.side > :nth-child(4) {
+    transform: var(--third);
+}
+.side > :nth-child(5) {
+    transform: var(--second);
+}
+.links {
+    width: 100%;
+    margin-top: 0.5em;
+    transform: var(--first);
+    display: flex;
+    justify-content: center;
+}
+.side > .switch {
+    left: calc(100% + 0.25em);
+    bottom: 3.5em;
+}
+.side > :nth-child(7) {
+    position: absolute;
+    writing-mode: vertical-lr;
+    left: calc(100% + 0.25em);
+    bottom: 5.5em;
+    transform: var(--first);
+}
+
+.turn {
+    transform: rotateY(90deg);
+}
+
+@media screen and (hover:none) {
+    .switch {
+        bottom: 1em;
+    }
+
+    .front > :nth-child(7) {
+        bottom: 2em;
+    }
+
+    .front > :nth-child(1) {
+        letter-spacing: -0.05em;
+    }
+}
