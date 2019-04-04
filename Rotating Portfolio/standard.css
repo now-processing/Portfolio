@@ -13,31 +13,31 @@
     --third: translateZ(4.5rem);
 }
 
-html, body {
+body {
     font-family: 'Inconsolata', monospace;
-    font-size: 3vmin;
+    font-size: 3.2vmin;
     text-align: center;
-    background: rgb(40,40,50);
+    background: #282832;
+    height: 100vh;
     display: grid;
     place-items: center;
-    width: 100%;
-    height: 100vh;
+}
+
+a {
+    color: steelblue;
 }
 
 .card {
     position: relative;
-    width: 40vmin;
-    height: 70.5vmin;
+    width: 42vmin;
+    height: 76vmin;
     color: white;
     transform-style: preserve-3d;
-    transition: transform 2s ease;
-    /*animation: spin 10s infinite linear;*/
-    /*transform: rotateY(-45deg);*/
+    transition: transform 1s ease;
 }
 
-@keyframes spin {
-    from {transform: rotateY(0);}
-    to {transform: rotateY(-360deg);}
+.turn {
+    transform: rotateY(90deg);
 }
 
 .card > div {
@@ -48,149 +48,245 @@ html, body {
     white-space: nowrap;
 }
 
-.front {
-    transform: translateZ(20vmin);
-}
-
-.side {
-    transform: rotateY(270deg) translateX(-20vmin);
-	transform-origin: top left;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: space-around;
-}
-
 /* front card styling */
 
+.front {
+    transform: translateZ(21vmin);
+    display: grid;
+}
+
+.front > :nth-child(1n + 0) {
+    line-height: 0.75;
+    place-self: start;
+}
 .front > :nth-child(1) {
-    position: absolute;
-    left: 0.1em;
+    grid-row: 1/2;
+    grid-column: 1/3;
     transform: var(--third);
 }
 .front > :nth-child(2) {
-    position: relative;
-    top: 1.5em;
-    right: 1em;
+    grid-row: 2/3;
+    grid-column: 1/3;
+    margin-left: 0.75em;
     transform: var(--first);
 }
 .front > :nth-child(3) {
-    position: absolute;
-    top: 1.25em;
-    left: 0;
+    grid-row: 2/3;
+    grid-column: 1/2;
     writing-mode: vertical-rl;
     transform: var(--second);
 }
 .front > :nth-child(4) {
-    position: absolute;
-    top: 0;
-    right: 0;
+    grid-row: 1/6;
+    grid-column: 3/4;
     writing-mode: vertical-rl;
     transform: var(--second);
 }
 .front > :nth-child(5) {
-    margin-top: 5em;
-    margin-right: 1.25em;
-    text-align: right;
-    transform: var(--first);
+    grid-row: 2/3;
+    grid-column: 1/3;
+    align-self: center;
+    justify-self: end;
+    margin-top: 0.1em;
+    transform: var(--third);
 }
-.front > a {
-    position: relative;
-    left: 0;
-    display: block;
+.front > :nth-child(6) {
+    grid-row: 2/3;
+    grid-column: 1/3;
+    place-self: center;
+    margin-top: 2.5em;
+    margin-left: 1.25em;
+    transition: 0.5s ease;
     transform: var(--second);
 }
-.front > a > i {
-    transition: 0.5s;
-}
-.front > a > i:hover {
-    padding: 1em;
-    background: white;
-    color: black;
+.front > a:hover {
+    margin-top: 3.5em;
+    padding: 0.5em;
+    color: #282832;
+    background: steelblue;
     border-radius: 50%;
 }
 .front > :nth-child(7) {
-    position: absolute;
-    bottom: 2.25em;
-    left: 0.25em;
-    cursor: pointer;
+    grid-row: 4/5;
+    grid-column: 1/3;
     transform: var(--first);
 }
 .switch {
-    position: absolute;
-    bottom: 3.2em;
-    left: 0.25em;
-    white-space: nowrap;
+    grid-row: 3/4;
+    grid-column: 1/2;
     cursor: pointer;
+    color: steelblue;
+    transform-origin: center left;
+    animation: nudge-left 0.5s linear;
     transform: var(--third);
+}
+.animationNull {
+    animation: 0s ease 0s 1 normal none running none;
+}
+.switchAnimationL {
+    animation: nudge-left 0.75s linear;
+    animation-delay: 1s;
+}
+@keyframes nudge-left {
+    0% {
+        transform: translateX(0);
+    }
+    35% {
+        transform: translateX(2.5vh);
+    }
+    50% {
+        transform: translateX(-1vh);
+    }
+    75% {
+        transform: translateX(0.25vh);
+    }
+    100% {
+        transform: translateX(0);
+    }
 }
 
 /* side card styling */
 
-.side a {
-    display: block;
-    margin: 0 0.25em;
-    padding: 0.5em;
-    border-radius: 50%;
-    background: rgb(40,40,50);
-    transition: 1s;
+.side {
+    transform: rotateY(270deg) translateX(-21vmin);
+    transform-origin: top left;
+    display: grid;
+    grid-template-columns: 1.25em auto 1.25em;
+    grid-template-rows: 3em repeat(2, 17.2vmin 1em 1.75em) 4em;
 }
-.links a:hover {
-    color: black;
-    background: white;
-}
+
 img {
     width: 100%;
 }
 
-.side > :nth-child(1) {
-    transform: var(--second);
+.side > :nth-child(1n+0) {
+    line-height: 0.75;
+    place-self: start;
 }
-.side > :nth-child(2) {
+.side > :nth-child(1) {
+    grid-row: 2/4;
+    grid-column: 1/2;
+    align-self: end;
+    letter-spacing: 0.04em;
+    writing-mode: vertical-rl;
     transform: var(--third);
 }
+.side > :nth-child(2) {
+    grid-row: 3/4;
+    grid-column: 2/4;
+    transform: var(--first);
+}
 .side > :nth-child(3) {
+    grid-row: 2/3;
+    grid-column: 2/3;
+    place-self: stretch;
     transform: var(--second);
 }
 .side > :nth-child(4) {
+    grid-row: 4/5;
+    grid-column: 1/3;
+    place-self: end;
+    font-size: 5vmin;
     transform: var(--third);
 }
 .side > :nth-child(5) {
+    grid-row: 4/9;
+    grid-column: 3/4;
+    place-self: start end;
+    margin-top: 0.75em;
+    writing-mode: vertical-rl;
     transform: var(--second);
 }
-.links {
-    width: 100%;
-    margin-top: 0.5em;
+.side > :nth-child(6) {
+    grid-row: 5/6;
+    grid-column: 2/3;
+    place-self: stretch;
     transform: var(--first);
-    display: flex;
-    justify-content: center;
-}
-.side > .switch {
-    left: calc(100% + 0.25em);
-    bottom: 3.5em;
 }
 .side > :nth-child(7) {
-    position: absolute;
-    writing-mode: vertical-lr;
-    left: calc(100% + 0.25em);
-    bottom: 5.5em;
+    grid-row: 5/8;
+    grid-column: 1/2;
+    place-self: start center;
+    margin-top: 2em;
+    font-size: 4.2vmin;
+    writing-mode: vertical-rl;
+    transform: var(--second);
+}
+.side > :nth-child(8) {
+    grid-row: 8/9;
+    grid-column: 1/3;
+    place-self: center start;
+    margin-left: 0.8em;
+    transform: var(--first);
+}
+.side > :nth-child(9) {
+    grid-row: 8/9;
+    grid-column: 2/3;
+    place-self: center end;
+    transform: var(--third);
+}
+.links > a {
+    padding: 0.3em;
+    border-radius: 0.1em;
+    transition: 0.5s;
+}
+.links > a:hover {
+    background: steelblue;
+    color: #282832;
+    border-radius: 50%;
+}
+.side > :nth-child(10) {
+    grid-row: 1/3;
+    grid-column: 3/4;
+    place-self: end;
+    writing-mode: vertical-rl;
     transform: var(--first);
 }
 
-.turn {
-    transform: rotateY(90deg);
+.side > .switch {
+    grid-row: 3/4;
+    grid-column: 3/4;
+    place-self: start end;
+}
+.switchAnimationR {
+    animation: nudge-right 0.75s linear;
+    animation-delay: 1s;
+}
+@keyframes nudge-right {
+    0% {
+        transform: translateX(0);
+    }
+    35% {
+        transform: translateX(-2.5vh);
+    }
+    50% {
+        transform: translateX(1vh);
+    }
+    75% {
+        transform: translateX(-0.25vh);
+    }
+    100% {
+        transform: translateX(0);
+    }
 }
 
 @media screen and (hover:none) {
-    .switch {
-        bottom: 1em;
+    body {
+        font-size: 4vmin;
     }
-
-    .front > :nth-child(7) {
-        bottom: 2em;
+    .card {
+        width: 56vmin;
+        height: 63vh;
     }
-
-    .front > :nth-child(1) {
-        letter-spacing: -0.05em;
+    .front {
+        transform: translateZ(28vmin);
+        display: grid;
+    }
+    .side {
+        transform: rotateY(270deg) translateX(-28vmin);
+        grid-template-rows: repeat(8, auto);
+    }
+    img {
+        width: 100%;
     }
 }
