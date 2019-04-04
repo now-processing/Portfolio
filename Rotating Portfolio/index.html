@@ -6,9 +6,18 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
         $(function() {
-            $('.switch').on('click', function() {
+            $('.front > .switch').on('click', function() {
                 $('.card').toggleClass('turn');
+                $('.side > .switch').toggleClass('switchAnimationR');
+                $('.front > .switch').addClass('animationNull');
             });
+            $('.side > .switch').on('click', function() {
+                $('.card').toggleClass('turn');
+                $('.side > .switch').toggleClass('switchAnimationR');
+                $('.front > .switch').removeClass('animationNull');
+                $('.front > .switch').toggleClass('switchAnimationL');
+            });
+            
         });
     </script>
     <title>Michael Hill</title>
@@ -19,27 +28,28 @@
             <h1>michael hill</h1>
             <h3>web developer</h3>
             <h2>self driven development</h2>
-            <span>creating new solutions from unique perspectives</span>
+            <h4>creating new solutions from unique perspectives</h4>
             <h4>get in touch</h4>
             <a href="mailto:mshill1s@hotmail.com?Subject=Found your portfolio"><i class="fas fa-envelope-open"></i></a>
-            <p>
-                see my other projects
-            </p>
-            <i class="switch fas fa-angle-double-left"></i>
+            <h4>see my other projects</h4>
+            <h3 class="switch"><i class="fas fa-angle-double-left"></i></h3>
         </div>
         <div class="side">
-            <h3>Orange is the New Cat</h3>
+            <h1>orange</h1>
+            <h3>is the new cat</h3>
             <a href="http://interfacestudentshowcase.com/media/mhill//Orange%20is%20the%20new%20Cat/index.html#home"><img src="orangescale.jpg" alt="Preview of 'Oranges is the New Cat' Site"></a>
-            <h3>Sherlock Holmes Consulting Detective</h3>
+            <h2>sherlock holmes</h2>
+            <h3>consulting detective</h3>
             <a href="https://www.interfacestudentshowcase.com/media/mhill//Sherlock/index.html"><img src="sherlockscale.jpg" alt="Preview of 'Sherlock Holmes Consulting Detective' Site"></a>
-            <h4>other places to find me</h4>
+            <h3>other places</h3>
+            <h4>to find me</h4>
             <div class="links">
                 <a href="https://github.com/now-processing"><i class="fab fa-github"></i></a>
                 <a href="https://www.linkedin.com/in/michael-hill-0230b1104/"><i class="fab fa-linkedin"></i></a>
                 <a href="https://twitter.com/now_processing"><i class="fab fa-twitter"></i></a>
             </div>
-            <h5>send a message</h5>
-            <i class="switch fas fa-angle-double-right"></i>
+            <h3>send a message</h3>
+            <h3 class="switch"><i class="fas fa-angle-double-right"></i></h3>
         </div>
     </div>
 </body>
